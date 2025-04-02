@@ -256,13 +256,14 @@ export async function updateCertificate(
 /**
  * Delete a certificate
  */
-export async function deleteCertificate(id: string): Promise<ActionResponse> {
+export async function deleteCertificate(id: string) {
   try {
     await db.certificate.delete({
       where: { id },
     });
 
     revalidatePath("dashboard/certificates");
+    revalidatePath("/certificates");
 
     return { success: true };
   } catch (error) {
