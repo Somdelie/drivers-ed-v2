@@ -7,6 +7,8 @@ export const metadata = {
   description: "Manage and view driver certificates",
 };
 
+export const dynamic = "force-dynamic";
+
 export default async function CertificatesPage() {
   const { certificates, success, error } = await getCertificates();
 

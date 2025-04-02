@@ -22,6 +22,9 @@ export const metadata: Metadata = {
 const DashboardPage = async () => {
   // This will redirect to sign-in if the user is not authenticated
   const user = await requireAuth();
+  if (!user) {
+    return null;
+  }
   // Fetch data from your database
   const stats = await getDashboardStats();
 
