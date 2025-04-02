@@ -1,6 +1,12 @@
+@import '@fontsource-variable/expletus-sans';
+@import '@fontsource/audiowide';
+@import '@fontsource/saira-stencil-one';
 @import "tailwindcss";
 @import "tw-animate-css";
 
+
+
+/* Then other CSS rules */
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -112,7 +118,6 @@
   --sidebar-ring: oklch(0.637 0.237 25.331);
 }
 
-
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -120,4 +125,9 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.certificate-name {
+  font-family: 'Audiowide', system-ui;
+  font-weight: 400;
 }

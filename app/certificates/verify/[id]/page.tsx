@@ -76,9 +76,9 @@ export default async function VerificationPage({
   const studentName = `${certificate?.name} ${certificate?.surname}`;
 
   return (
-    <div className="min-h-screen px-4 py-8 bg-gray-100">
+    <div className="min-h-screen">
       {/* Verification Banner */}
-      <div
+      {/* <div
         className={`mb-6 p-4 rounded-lg text-center ${
           isValid ? "bg-green-100" : "bg-amber-100"
         }`}
@@ -112,11 +112,11 @@ export default async function VerificationPage({
             </p>
           </div>
         )}
-      </div>
+      </div> */}
 
       {/* Certificate Display */}
-      <div className="max-w-[90%] pb-6 mx-auto mb-6 bg-white rounded-lg shadow-md">
-        <h2 className="p-6 pb-2 mb-4 text-xl font-bold text-center border-y sm:text-3xl bg-slate-100">
+      <div className="max-w-[100%]">
+        <h2 className="p-2 mb-4 text-xl font-bold text-center border-y sm:text-3xl bg-slate-100">
           DriversEd Certificate
         </h2>
         <Certificate
@@ -133,7 +133,7 @@ export default async function VerificationPage({
       </div>
 
       {/* Simple Certificate Details */}
-      <div className="max-w-[90%] p-6 mx-auto bg-white rounded-lg shadow-md">
+      {/* <div className="max-w-[90%] p-6 mx-auto bg-white rounded-lg shadow-md">
         <h2 className="pb-2 mb-4 text-lg font-bold border-b">
           Certificate Information
         </h2>
@@ -178,7 +178,7 @@ export default async function VerificationPage({
             </a>
           </p>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

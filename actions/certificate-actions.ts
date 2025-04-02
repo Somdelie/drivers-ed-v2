@@ -280,17 +280,20 @@ export async function deleteCertificate(id: string) {
  * Utility function to generate a unique certificate ID
  */
 function generateCertificateId(): string {
-  // Format: 10012613M0007
-  // the later should be not only m but also A-Z, 0-9
-  const timestamp = Date.now().toString().slice(-10);
-  const random = Math.floor(Math.random() * 10000)
-    .toString()
-    .padStart(4, "0");
-  const randomChar = Math.random()
-    .toString(36) // Convert to base 36 (0-9, a-z)
-    .slice(2, 6) // Get 4 characters
-    .toUpperCase(); // Convert to uppercase
-  return `${timestamp}${random}${randomChar}`;
+  // Get first 8 digits - can use timestamp or other method
+  const firstPart = Math.floor(10000000 + Math.random() * 90000000).toString();
+
+  // Get the middle character - use A-Z (could also include 0-9 if needed)
+  const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  const middleChar = characters.charAt(
+    Math.floor(Math.random() * characters.length)
+  );
+
+  // Get last 4 digits
+  const lastPart = Math.floor(1000 + Math.random() * 9000).toString();
+
+  // Combine all parts to form the 13-character ID
+  return `${firstPart}${middleChar}${lastPart}`;
 }
 
 export async function getDashboardStats(): Promise<DashboardStats> {

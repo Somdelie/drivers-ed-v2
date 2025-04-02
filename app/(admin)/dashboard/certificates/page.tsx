@@ -1,5 +1,6 @@
 import { getCertificates } from "@/actions/certificate-actions";
 import CertificatesList from "@/components/dash/CertificatesList";
+import { requireAuth } from "@/lib/auth";
 import { Metadata } from "next";
 
 export const metadata = {
@@ -10,6 +11,10 @@ export const metadata = {
 export const dynamic = "force-dynamic";
 
 export default async function CertificatesPage() {
+  const user = await requireAuth();
+  if (!user) {
+    return null;
+  }
   const { certificates, success, error } = await getCertificates();
 
   return (
