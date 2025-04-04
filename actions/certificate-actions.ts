@@ -13,6 +13,7 @@ interface CertificateFormData {
   date?: string;
   city?: string;
   instructor?: string;
+  licenseNumber?: string;
   isValid?: boolean;
   studentName?: string; // For backward compatibility
 }
@@ -28,6 +29,7 @@ interface Certificate {
   expiryDate?: Date | null;
   city: string;
   instructor: string;
+  licenseNumber?: string | null;
   isValid: boolean;
   createdAt: Date;
   updatedAt: Date;
@@ -81,6 +83,7 @@ export async function createCertificate(
         name: formData.name || "",
         surname: formData.surname || "",
         certificateType: formData.certificateType || "Driver Risk Assessment",
+        licenseNumber: formData.licenseNumber || "",
         result: formData.marks || formData.result || "",
         date,
         expiryDate,
@@ -280,16 +283,14 @@ export async function deleteCertificate(id: string) {
  * Utility function to generate a unique certificate ID
  */
 function generateCertificateId(): string {
-  // Get first 8 digits - can use timestamp or other method
+  // Get first 8 digits - using only numbers
   const firstPart = Math.floor(10000000 + Math.random() * 90000000).toString();
 
-  // Get the middle character - use A-Z (could also include 0-9 if needed)
-  const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-  const middleChar = characters.charAt(
-    Math.floor(Math.random() * characters.length)
-  );
+  // Ensure the middle character is always a letter (A-Z)
+  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const middleChar = letters.charAt(Math.floor(Math.random() * letters.length));
 
-  // Get last 4 digits
+  // Get last 4 digits - using only numbers
   const lastPart = Math.floor(1000 + Math.random() * 9000).toString();
 
   // Combine all parts to form the 13-character ID

@@ -25,10 +25,11 @@ const CreateDialog = () => {
   const [city, setCity] = useState("");
   const [marks, setMarks] = useState("");
   const [instructor, setInstructor] = useState("Rihaad");
+  const [licenseNumber, setLicenseNumber] = useState("");
   const [error, setError] = useState("");
   const [isPending, setIsPending] = useState(false);
 
-  const buttonDisabled = !name || !surname || !city || !marks;
+  const buttonDisabled = !name || !surname || !city || !marks || !licenseNumber;
 
   interface CertificateData {
     name: string;
@@ -37,6 +38,7 @@ const CreateDialog = () => {
     marks: string;
     instructor: string;
     certificateType: string;
+    licenseNumber: string;
   }
 
   interface CreateCertificateResult {
@@ -64,6 +66,7 @@ const CreateDialog = () => {
       marks: marks.trim(),
       instructor: instructor.trim(),
       certificateType: "Driver Risk Assessment",
+      licenseNumber: licenseNumber.trim(),
     };
 
     try {
@@ -84,6 +87,7 @@ const CreateDialog = () => {
         setSurname("");
         setCity("");
         setMarks("");
+        setLicenseNumber("");
 
         // Close dialog
         setOpen(false);
@@ -183,8 +187,22 @@ const CreateDialog = () => {
               />
             </div>
 
+            {/* license number */}
+            <div className="space-y-1">
+              <Label htmlFor="licenseNumber" className="text-sm">
+                License Number
+              </Label>
+              <Input
+                id="licenseNumber"
+                placeholder="ABC123456"
+                disabled={isPending}
+                value={licenseNumber}
+                onChange={(e) => setLicenseNumber(e.target.value)}
+              />
+            </div>
+
             {/* instructor */}
-            <div className="space-y-1 md:col-span-2">
+            <div className="space-y-1">
               <Label htmlFor="instructor" className="text-sm">
                 Instructor
               </Label>

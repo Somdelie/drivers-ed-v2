@@ -13,6 +13,7 @@ model Certificate {
   certificateId   String    @unique // For verification purposes (e.g., 10012613M0007)
   name            String // First name
   surname         String // Last name
+  licenseNumber   String // Driving license number
   certificateType String    @default("Driver Risk Assessment")
   result          String // Marks in percentage
   date            DateTime  @default(now())
