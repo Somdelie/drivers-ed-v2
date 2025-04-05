@@ -14,6 +14,7 @@ interface CertificateProps {
   certificateId?: string;
   certificateType?: string;
   qrCodeValue?: string;
+  licenseNumber?: string;
 }
 
 const montserrat = Montserrat({ subsets: ["latin"], weight: "700" });
@@ -26,6 +27,7 @@ const Certificate: React.FC<CertificateProps> = ({
   instructor = "",
   result = "",
   certificateId = "",
+  licenseNumber = "",
   certificateType = "Driver Risk Assessment",
   qrCodeValue = "",
 }) => {
@@ -61,7 +63,7 @@ const Certificate: React.FC<CertificateProps> = ({
           "opacity-85 text-xl text-[#000000]" + " " + montserrat.className
         }
       >
-        {studentId}
+        {licenseNumber}
       </text>
 
       {/* Marks */}

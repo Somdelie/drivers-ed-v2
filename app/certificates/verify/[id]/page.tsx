@@ -121,6 +121,7 @@ export default async function VerificationPage({
         </h2>
         <Certificate
           studentName={studentName}
+          licenseNumber={certificate?.licenseNumber ?? undefined}
           studentId={certificate?.certificateId}
           certificateId={certificate?.id}
           qrCodeValue={`${baseUrl}/certificates/verify/${certificate?.id}`}
